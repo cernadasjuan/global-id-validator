@@ -17,10 +17,10 @@ pnpm add global-id-validator
 ### Basic Usage
 
 ```typescript
-import { validatePassport, validateUSSSN } from 'global-id-validator';
+import { argentina, brazil, us, canada } from 'global-id-validator';
 
-// Validate a passport number
-const passportResult = validatePassport('AB1234567', 'GB');
+// Validate a US passport
+const passportResult = us.validatePassport('AB1234567');
 if (passportResult.isValid) {
   console.log('Valid passport!', passportResult.metadata);
 } else {
@@ -28,7 +28,7 @@ if (passportResult.isValid) {
 }
 
 // Validate a US Social Security Number
-const ssnResult = validateUSSSN('123-45-6789');
+const ssnResult = us.validateSSN('123-45-6789');
 if (ssnResult.isValid) {
   console.log('Valid SSN!', ssnResult.metadata);
 } else {
@@ -38,29 +38,52 @@ if (ssnResult.isValid) {
 
 ### Available Validators
 
-#### Passport Validator
+#### United States
 
 ```typescript
-import { validatePassport } from 'global-id-validator';
+import { us } from 'global-id-validator';
 
-// Generic validation (basic format check)
-const result1 = validatePassport('AB1234567');
-
-// Country-specific validation
-const result2 = validatePassport('123456789', 'US'); // US passport
-const result3 = validatePassport('AB1234567', 'GB'); // UK passport
-```
-
-#### Social Security Number Validators
-
-```typescript
-import { validateUSSSN, validateCanadianSIN } from 'global-id-validator';
+// US passport
+const passportResult = us.validatePassport('123456789');
 
 // US Social Security Number
-const result1 = validateUSSSN('123-45-6789');
+const ssnResult = us.validateSSN('123-45-6789');
+```
+
+#### Canada
+
+```typescript
+import { canada } from 'global-id-validator';
 
 // Canadian Social Insurance Number
-const result2 = validateCanadianSIN('046-454-286');
+const sinResult = canada.validateSIN('046-454-286');
+```
+
+#### Argentina
+
+```typescript
+import { argentina } from 'global-id-validator';
+
+// Argentine National Identity Document
+const dniResult = argentina.validateDNI('12345678');
+
+// Argentine Tax ID (CUIT)
+const cuitResult = argentina.validateCUIT('20-12345678-9');
+
+// Argentine Labor Identification Code (CUIL)
+const cuilResult = argentina.validateCUIL('27-12345678-9');
+```
+
+#### Brazil
+
+```typescript
+import { brazil } from 'global-id-validator';
+
+// Brazilian Individual Taxpayer Registry (CPF)
+const cpfResult = brazil.validateCPF('123.456.789-09');
+
+// Brazilian National Registry of Legal Entities (CNPJ)
+const cnpjResult = brazil.validateCNPJ('12.345.678/0001-95');
 ```
 
 ### Validation Result
@@ -68,16 +91,29 @@ const result2 = validateCanadianSIN('046-454-286');
 All validators return a `ValidationResult` object with the following structure:
 
 ```typescript
-interface ValidationResult {
+// Successful validation
+type ValidationSuccessResult = {
   // Whether the ID is valid
-  isValid: boolean;
+  isValid: true;
+  
+  // Additional metadata about the ID
+  metadata: {
+    // Formatted value of the ID (if applicable)
+    formattedValue: string;
+  };
+}
+
+// Failed validation
+type ValidationErrorResult = {
+  // Whether the ID is valid
+  isValid: false;
   
   // Error message if the ID is invalid
-  errorMessage?: string;
-  
-  // Additional metadata about the ID (country, issuer, etc.)
-  metadata?: Record<string, unknown>;
+  errorMessage: string;
 }
+
+// Combined type
+type ValidationResult = ValidationSuccessResult | ValidationErrorResult;
 ```
 
 ## Development

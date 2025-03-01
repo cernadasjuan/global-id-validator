@@ -1,4 +1,4 @@
-import { ValidationSuccessResult } from '../../../../types'
+import { ValidationSuccessResult } from '../../../types'
 import { validateSIN } from '..'
 
 describe('Canadian SIN Validator', () => {

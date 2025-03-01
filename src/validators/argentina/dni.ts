@@ -1,5 +1,5 @@
-import { ValidationResult } from '../../../types'
-import { createInvalidResult, createValidResult, isNumeric } from '../../utils'
+import { ValidationResult } from '../../types'
+import { createInvalidResult, createValidResult, isNumeric } from '../utils'
 
 /**
  * Validates an Argentina Documento Nacional de Identidad (DNI)

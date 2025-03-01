@@ -1,5 +1,5 @@
-import { ValidationResult } from '../../../types'
-import { createInvalidResult, createValidResult } from '../../utils'
+import { ValidationResult } from '../../types'
+import { createInvalidResult, createValidResult } from '../utils'
 
 /**
  * Validates a US passport number

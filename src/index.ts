@@ -7,14 +7,13 @@
 export * from './types'
 
 // Export Argentina validators
-export { validateDNI, validateCUIT, validateCUIL } from './validators/countries/argentina'
+export * as argentina from './validators/argentina'
 
 // Export Brazil validators
-export { validateCPF, validateCNPJ } from './validators/countries/brazil'
+export * as brazil from './validators/brazil'
 
 // Export US validators
-export { validatePassport, validateSSN } from './validators/countries/us'
+export * as us from './validators/us'
 
 // Export Canada validators
-export { validateSIN } from './validators/countries/canada'
-
+export * as canada from './validators/canada'

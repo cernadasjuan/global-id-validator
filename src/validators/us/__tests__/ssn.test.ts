@@ -1,4 +1,4 @@
-import { ValidationSuccessResult } from '../../../../types'
+import { ValidationSuccessResult } from '../../../types'
 import { validateSSN } from '..'
 
 describe('US SSN Validator', () => {

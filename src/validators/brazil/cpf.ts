@@ -1,5 +1,5 @@
-import { ValidationResult } from '../../../types'
-import { createInvalidResult, createValidResult, isNumeric, validateMod10WithTwoCheckDigits } from '../../utils'
+import { ValidationResult } from '../../types'
+import { createInvalidResult, createValidResult, isNumeric, validateMod10WithTwoCheckDigits } from '../utils'
 
 /**
  * Validates a Brazil Cadastro de Pessoas Físicas (CPF)

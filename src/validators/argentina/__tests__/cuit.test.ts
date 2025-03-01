@@ -3,7 +3,6 @@ import { validateCUIT } from '../cuit'
 describe('Argentina CUIT Validator', () => {
   test('should validate a valid CUIT for a male individual (20)', () => {
     const result = validateCUIT('20123456789')
-    console.log('Test 1 result:', result)
     expect(result.isValid).toBe(true)
     if (result.isValid) {
       expect(result.metadata.formattedValue).toBe('20-12345678-9')

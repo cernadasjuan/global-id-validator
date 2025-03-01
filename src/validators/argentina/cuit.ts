@@ -1,10 +1,10 @@
-import { ValidationResult } from '../../../types'
+import { ValidationResult } from '../../types'
 import {
   calculateMod10CheckDigit,
   createInvalidResult,
   createValidResult,
   isNumeric
-} from '../../utils'
+} from '../utils'
 
 /**
  * Validates an Argentina Clave Única de Identificación Tributaria (CUIT)
