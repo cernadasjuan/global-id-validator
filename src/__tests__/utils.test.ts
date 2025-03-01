@@ -8,8 +8,9 @@ import {
 describe('Validator Utilities', () => {
   describe('createValidResult', () => {
     it('should create a valid result object', () => {
-      const result = createValidResult()
+      const result = createValidResult({ formattedValue: '123456789' })
       expect(result.isValid).toBe(true)
+      expect(result.metadata.formattedValue).toBe('123456789')
     })
   })
 
