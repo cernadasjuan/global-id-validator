@@ -5,7 +5,7 @@ import { ValidationErrorResult, ValidationMetadata, ValidationSuccessResult } fr
  * @param metadata Optional metadata about the ID
  * @returns A valid validation result
  */
-export function createValidResult(metadata: ValidationMetadata = {}): ValidationSuccessResult {
+export function createValidResult(metadata: ValidationMetadata): ValidationSuccessResult {
   return {
     isValid: true,
     metadata,

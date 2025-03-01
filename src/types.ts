@@ -9,7 +9,7 @@ export type ValidationMetadata = {
   /**
    * Formatted value of the ID (if applicable)
    */
-  formattedValue?: string
+  formattedValue: string
 }
 
 /**

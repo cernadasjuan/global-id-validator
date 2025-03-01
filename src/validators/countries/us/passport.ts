@@ -37,10 +37,10 @@ export function validatePassport(passportNumber: string): ValidationResult {
     if (!validIssuingOffices.includes(issuingOffice)) {
       return createInvalidResult('Invalid issuing office code in passport number')
     }
-  }
 
-  // For modern format (letter + 8 digits), check if the letter is valid
-  if (modernFormat.test(cleanedNumber)) {
+    return createValidResult({ formattedValue: cleanedNumber })
+  } else {
+    // For modern format (letter + 8 digits), check if the letter is valid
     // Skip 'I' as it's not used in passport numbers to avoid confusion with '1'
     const validFirstLetters = 'ABCDEFGHJKLMNOPQRSTUVWXYZ'
 
@@ -49,7 +49,7 @@ export function validatePassport(passportNumber: string): ValidationResult {
     if (!validFirstLetters.includes(firstLetter)) {
       return createInvalidResult('Invalid first letter in passport number')
     }
-  }
 
-  return createValidResult()
+    return createValidResult({ formattedValue: cleanedNumber })
+  }
 }

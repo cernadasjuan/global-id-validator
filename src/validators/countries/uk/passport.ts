@@ -17,5 +17,5 @@ export function validatePassport(passportNumber: string): ValidationResult {
     )
   }
 
-  return createValidResult()
+  return createValidResult({ formattedValue: cleanedNumber })
 }
