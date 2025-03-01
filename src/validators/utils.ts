@@ -1,15 +1,15 @@
-import { ValidationResult } from '../types';
+import { ValidationErrorResult, ValidationMetadata, ValidationSuccessResult } from '../types'
 
 /**
  * Creates a valid validation result
  * @param metadata Optional metadata about the ID
  * @returns A valid validation result
  */
-export function createValidResult(metadata?: Record<string, unknown>): ValidationResult {
+export function createValidResult(metadata: ValidationMetadata = {}): ValidationSuccessResult {
   return {
     isValid: true,
     metadata,
-  };
+  }
 }
 
 /**
@@ -17,11 +17,11 @@ export function createValidResult(metadata?: Record<string, unknown>): Validatio
  * @param errorMessage Error message explaining why the ID is invalid
  * @returns An invalid validation result
  */
-export function createInvalidResult(errorMessage: string): ValidationResult {
+export function createInvalidResult(errorMessage: string): ValidationErrorResult {
   return {
     isValid: false,
     errorMessage,
-  };
+  }
 }
 
 /**
@@ -30,7 +30,7 @@ export function createInvalidResult(errorMessage: string): ValidationResult {
  * @returns True if the string contains only digits
  */
 export function isNumeric(str: string): boolean {
-  return /^\d+$/.test(str);
+  return /^\d+$/.test(str)
 }
 
 /**
@@ -40,26 +40,26 @@ export function isNumeric(str: string): boolean {
  */
 export function validateLuhnChecksum(digits: string): boolean {
   if (!isNumeric(digits)) {
-    return false;
+    return false
   }
 
-  let sum = 0;
-  let shouldDouble = false;
+  let sum = 0
+  let shouldDouble = false
 
   // Start from the rightmost digit and move left
   for (let i = digits.length - 1; i >= 0; i--) {
-    let digit = parseInt(digits.charAt(i), 10);
+    let digit = parseInt(digits.charAt(i), 10)
 
     if (shouldDouble) {
-      digit *= 2;
+      digit *= 2
       if (digit > 9) {
-        digit -= 9;
+        digit -= 9
       }
     }
 
-    sum += digit;
-    shouldDouble = !shouldDouble;
+    sum += digit
+    shouldDouble = !shouldDouble
   }
 
-  return sum % 10 === 0;
-} 
+  return sum % 10 === 0
+}

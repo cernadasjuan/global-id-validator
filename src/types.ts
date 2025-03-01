@@ -3,37 +3,58 @@
  */
 
 /**
- * Validation result interface
+ * Metadata type for validation results
  */
-export interface ValidationResult {
+export type ValidationMetadata = {
+  /**
+   * Formatted value of the ID (if applicable)
+   */
+  formattedValue?: string
+}
+
+/**
+ * Successful validation result type
+ */
+export type ValidationSuccessResult = {
   /**
    * Whether the ID is valid
    */
-  isValid: boolean;
-
-  /**
-   * Error message if the ID is invalid
-   */
-  errorMessage?: string;
+  isValid: true
 
   /**
    * Additional metadata about the ID (country, issuer, etc.)
+   * Always defined when isValid is true
    */
-  metadata?: Record<string, unknown>;
+  metadata: ValidationMetadata
 }
+
+/**
+ * Error validation result type
+ */
+export type ValidationErrorResult = {
+  /**
+   * Whether the ID is invalid
+   */
+  isValid: false
+
+  /**
+   * Error message if the ID is invalid
+   * Always defined when isValid is false
+   */
+  errorMessage: string
+}
+
+/**
+ * Combined validation result type
+ */
+export type ValidationResult = ValidationSuccessResult | ValidationErrorResult
 
 /**
  * Validator function type
  */
-export type ValidatorFn = (id: string) => ValidationResult;
+export type ValidatorFn = (id: string) => ValidationResult
 
 /**
  * Supported ID types
  */
-export enum IdType {
-  PASSPORT = 'passport',
-  SSN = 'ssn',
-  TAX_ID = 'taxId',
-  NATIONAL_ID = 'nationalId',
-  CUSTOM = 'custom'
-} 
+export type IdType = 'passport' | 'ssn' | 'taxId' | 'nationalId' | 'custom'
