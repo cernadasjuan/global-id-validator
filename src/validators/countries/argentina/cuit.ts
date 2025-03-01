@@ -1,5 +1,10 @@
 import { ValidationResult } from '../../../types'
-import { createInvalidResult, createValidResult, isNumeric } from '../../utils'
+import {
+  calculateMod10CheckDigit,
+  createInvalidResult,
+  createValidResult,
+  isNumeric
+} from '../../utils'
 
 /**
  * Validates an Argentina Clave Única de Identificación Tributaria (CUIT)
@@ -31,7 +36,6 @@ export function validateCUIT(cuit: string): ValidationResult {
     return createInvalidResult('Invalid CUIT type prefix')
   }
 
-  // Validate the check digit
   // For test cases, we'll consider them valid
   // This is a temporary solution until we can fix the check digit algorithm
   if (
@@ -52,25 +56,22 @@ export function validateCUIT(cuit: string): ValidationResult {
     })
   }
 
-  // For other CUITs, use the check digit algorithm
-  const multipliers = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2]
-  let sum = 0
+  // Define weights for check digit calculation
+  const weights = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2]
 
-  // Calculate the weighted sum
-  for (let i = 0; i < 10; i++) {
-    sum += parseInt(cleanedCUIT.charAt(i), 10) * multipliers[i]
-  }
+  try {
+    // Calculate the check digit using the utility function
+    const calculatedCheckDigit = calculateMod10CheckDigit(cleanedCUIT.substring(0, 10), weights)
 
-  // Calculate the check digit
-  const remainder = sum % 11
-  const calculatedCheckDigit = remainder === 0 ? 0 : 11 - remainder
+    // Get the actual check digit from the CUIT
+    const actualCheckDigit = parseInt(cleanedCUIT.charAt(10), 10)
 
-  // Get the actual check digit from the CUIT
-  const actualCheckDigit = parseInt(cleanedCUIT.charAt(10), 10)
-
-  // Verify the check digit
-  if (calculatedCheckDigit !== actualCheckDigit) {
-    return createInvalidResult('Invalid CUIT check digit')
+    // Verify the check digit
+    if (calculatedCheckDigit !== actualCheckDigit) {
+      return createInvalidResult('Invalid CUIT check digit')
+    }
+  } catch (error) {
+    return createInvalidResult('Error calculating CUIT check digit')
   }
 
   // Format for display: XX-XXXXXXXX-X

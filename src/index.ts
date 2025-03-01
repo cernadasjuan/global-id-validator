@@ -9,6 +9,9 @@ export * from './types'
 // Export Argentina validators
 export { validateDNI, validateCUIT, validateCUIL } from './validators/countries/argentina'
 
+// Export Brazil validators
+export { validateCPF, validateCNPJ } from './validators/countries/brazil'
+
 // Export US validators
 export { validatePassport, validateSSN } from './validators/countries/us'
 
