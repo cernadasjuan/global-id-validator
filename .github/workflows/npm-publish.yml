@@ -35,8 +35,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Update version
-        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+      #- name: Update version
+     #   run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Publish to NPM
         run: pnpm publish --no-git-checks
