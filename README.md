@@ -1,6 +1,6 @@
 # Global ID Validator
 
-A TypeScript library for validating various global identification numbers like passports, social security numbers, and more.
+A TypeScript library for validating various global identification numbers like passports, tax ids, social security numbers, and more.
 
 ## Installation
 
@@ -85,6 +85,8 @@ const cpfResult = brazil.validateCPF('123.456.789-09');
 // Brazilian National Registry of Legal Entities (CNPJ)
 const cnpjResult = brazil.validateCNPJ('12.345.678/0001-95');
 ```
+
+More validators will be added in the future, feel free to contribute with your own! :)
 
 ### Validation Result
 
