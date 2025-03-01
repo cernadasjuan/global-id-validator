@@ -3,7 +3,8 @@
  */
 
 import { validateDNI } from './dni'
+import { validateCUIT } from './cuit'
 
-export { validateDNI }
+export { validateDNI, validateCUIT }
 
 // Add more Argentina-specific validators here 
