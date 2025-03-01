@@ -1,5 +1,5 @@
-import { ValidationSuccessResult } from '../../../types'
-import { validatePassport } from '../../../validators/countries/uk'
+import { ValidationSuccessResult } from '../../../../types'
+import { validatePassport } from '..'
 
 describe('UK Passport Validator', () => {
   it('should validate correct UK passport numbers with 9 digits', () => {

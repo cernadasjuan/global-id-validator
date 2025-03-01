@@ -1,5 +1,5 @@
-import { ValidationSuccessResult } from '../../../types'
-import { validateSIN } from '../../../validators/countries/canada'
+import { ValidationSuccessResult } from '../../../../types'
+import { validateSIN } from '..'
 
 describe('Canadian SIN Validator', () => {
   it('should validate correct Canadian SINs', () => {

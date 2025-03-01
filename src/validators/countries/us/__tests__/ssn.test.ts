@@ -1,5 +1,5 @@
-import { ValidationSuccessResult } from '../../../types'
-import { validateSSN } from '../../../validators/countries/us'
+import { ValidationSuccessResult } from '../../../../types'
+import { validateSSN } from '..'
 
 describe('US SSN Validator', () => {
   it('should validate correct US SSNs', () => {
