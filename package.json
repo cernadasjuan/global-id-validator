@@ -5,7 +5,10 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.browser.min.js",
-  "repository": "https://github.com/cernadasjuan/global-id-validator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cernadasjuan/global-id-validator"
+  },
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
