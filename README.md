@@ -1,5 +1,7 @@
 # Global ID Validator
 
+[![npm version](https://img.shields.io/npm/v/global-id-validator.svg)](https://www.npmjs.com/package/global-id-validator)
+
 A TypeScript library for validating various global identification numbers like passports, tax ids, social security numbers, and more.
 
 ## Installation
