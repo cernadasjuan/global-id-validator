@@ -21,16 +21,11 @@ Run the example script:
 node index.js
 ```
 
-This will demonstrate validation of:
-- US Social Security Numbers (SSN)
-- US Passports
-- Argentine Tax IDs (CUIT)
-- Brazilian CPF
-- Canadian SIN
+This will demonstrate validation of US Social Security Numbers (SSN)
 
 ## Example Output
 
-The script will output validation results for both valid and invalid examples of each ID type:
+The script will output validation results for both valid and invalid examples.
 
 ```
 Global ID Validator Example
@@ -41,26 +36,3 @@ SSN: 123-45-6789
 
 SSN: 123-45-67890
 ❌ Invalid SSN: SSN must be 9 digits
-
-Example 2: US Passports
-...
-```
-
-## How It Works
-
-The example demonstrates:
-1. Importing validators from the global-id-validator package
-2. Validating different types of IDs
-3. Handling both valid and invalid results
-4. Accessing formatted values and error messages
-
-## Library Features
-
-The global-id-validator library supports validation for:
-
-- 🇺🇸 United States: SSN, Passport
-- 🇨🇦 Canada: SIN
-- 🇦🇷 Argentina: DNI, CUIT, CUIL
-- 🇧🇷 Brazil: CPF, CNPJ
-
-Each validator returns a consistent result object with validation status and additional metadata. 
